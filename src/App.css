@@ -1,38 +1,119 @@
-.App {
+/* App.css */
+
+* {
+  box-sizing: border-box;
+}
+.container-fluid {
+  width: 100vw;               /* Full viewport width */
+  height: auto;               /* Adjust height as needed */
+  font-size: 20px;            
+  background-color: black;
+  color: aliceblue;
+  position: fixed;            /* Fixes the container's position */
+  top: 0;                     /* Stick it to the top */
+  left: 0;                    /* Align it to the left edge */
+  z-index: 9999;              /* Ensure it stays on top of other elements */
+  padding: 10px 20px;         /* Add padding if needed */
+}
+#vote {
+  background-image: url("https://i.makeagif.com/media/11-05-2021/Z5Luzw.gif");
+  background-size: cover;         /* Ensures the image covers the button */
+  background-position: center;    /* Centers the image */
+  background-repeat: no-repeat;   /* Prevents image tiling */
+  color: white;                   /* Makes button text visible */
+  border: none;                   /* Optional: removes border */
+  padding: 10px 20px;             /* Adjusts button size */
+  font-size: 25px;                /* Optional: text size */
+  cursor: pointer;               /* Cursor change on hover */
+}
+
+#login{
+float: right;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background Image */
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://motionbgs.com/media/135/totoro-on-top-of-a-tree_312.gif') no-repeat center center fixed;
+  background-size: cover;
+  z-index: -1;
+  filter: brightness(0.6);
+}
+
+/* General Layout */
+.app-container {
+  min-height: 100vh;
+  padding-top: 80px; /* Match fixed navbar height */
+  padding-bottom: 80px; /* Avoid footer overlap */
+  position: relative;
+  font-size:28px;
+  z-index: 1;
+}
+
+/* Container for centered content */
+.form-container,
+.login-container,
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(248, 248, 247);
+  padding: 40px 20px;
+}
+
+/* Center Text Box */
+.text-box {
+  max-width: 600px;
+  margin: 40px auto;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Footer */
+.footer {
+  font-size: 30px;
+  background-color: #222;
+  text-align: center;
+  color:aliceblue
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Base Link Styling */
+.custom-link-btn {
+  font-size: 30px;
+  color: aliceblue;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.custom-link-btn:hover{
+  background-color: rgb(105, 160, 141);
+}
+/* Default Button Style (like Bootstrap outline) */
+.custom-link-btn.btn-outline-light {
   color: white;
+  border: 2px solid white;
+}
+.logo {
+  font-size: 30px;
+  color: rgb(53, 139, 111);
+  display: inline-block;          /* Needed for transform to work properly */
+  transition: transform 0.5s ease-in-out; /* Smooth transition */
 }
 
-.App-link {
-  color: #61dafb;
+.logo:hover {
+  transform: rotate(360deg);      /* Rotate 360 degrees on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.custom-link-btn.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }

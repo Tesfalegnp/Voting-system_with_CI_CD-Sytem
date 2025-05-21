@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     if (username === 'admin' && password === '123') {
       localStorage.setItem('isAdminLoggedIn', 'true');
@@ -31,6 +30,8 @@ function Login() {
         </div>
         <button type="submit" className="btn btn-success w-100">Login</button>
       </form>
+
+      {/* ✅ Now works because we imported Link */}
       <Link to="/" className="btn btn-link mt-3 text-white">Back to Home</Link>
     </div>
   );

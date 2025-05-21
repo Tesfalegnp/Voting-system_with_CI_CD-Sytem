@@ -23,19 +23,19 @@ function VoteForm() {
   };
 
   return (
-    <main className="form-container text-white text-center p-4">
+    <div className="form-container">
       <h1 className="mb-4">Online Voting Platform</h1>
-      <form onSubmit={handleSubmit} className="bg-dark p-4 rounded shadow" style={{ maxWidth: 400, margin: 'auto', opacity: 0.95 }}>
-        <div className="form-group mb-3">
-          <label>Name:</label>
+      <form onSubmit={handleSubmit} className="bg-dark p-4 rounded shadow" style={{ maxWidth: 400, opacity: 0.95 }}>
+        <div className="form-group mb-3 w-100">
+          <label className="w-100 mb-2">Name:</label>
           <input type="text" className="form-control" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
-        <div className="form-group mb-3">
-          <label>Phone:</label>
+        <div className="form-group mb-3 w-100">
+          <label className="w-100 mb-2">Phone:</label>
           <input type="text" className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)} required />
         </div>
-        <div className="form-group mb-4">
-          <label>Your Choice:</label>
+        <div className="form-group mb-4 w-100">
+          <label className="w-100 mb-2">Your Choice:</label>
           <select className="form-select" value={choice} onChange={(e) => setChoice(e.target.value)} required>
             <option value="">Select</option>
             <option value="Big">Big</option>
@@ -46,7 +46,7 @@ function VoteForm() {
         <button type="submit" className="btn btn-primary w-100">Submit Vote</button>
       </form>
       <Link to="/" className="btn btn-link mt-3 text-white">Back to Home</Link>
-    </main>
+    </div>
   );
 }
 

@@ -10,7 +10,7 @@ function AdminDashboard() {
   }
 
   return (
-    <div className="admin-dashboard text-white text-center p-5">
+    <div className="dashboard-container">
       <h1>Welcome, Admin!</h1>
       <p>You are now logged in.</p>
       <Link to="/" className="btn btn-primary">Logout</Link>
