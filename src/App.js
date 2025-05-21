@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom'; // ← Make sure all are imported
 import Welcome from './components/Welcome';
 import VoteForm from './components/VoteForm';
 import Login from './components/Login';
@@ -17,11 +17,20 @@ function App() {
       {/* Navbar */}
       <nav className="navbar navbar-dark bg-dark px-3 fixed-top">
         <div className="container-fluid d-flex justify-content-between align-items-center">
-          <Link to="/" className="logo">
-            <img src="https://data.textstudio.com/output/sample/animated/2/6/8/5/vote-1-5862.gif" alt="Logo" width="30" height="30" className="me-2" />
+          <Link to="/" className="logo d-flex align-items-center">
+            <img
+              src="https://data.textstudio.com/output/sample/animated/2/6/8/5/vote-1-5862.gif "
+              alt="Logo"
+              width="30"
+              height="30"
+              className="me-2"
+            />
             Online Voting System
           </Link>
-          <Link to="/login" id= "login"className="custom-link-btn">Sign In</Link>        </div>
+          <Link to="/login" id="login" className="custom-link-btn btn btn-outline-light">
+            Sign In
+          </Link>
+        </div>
       </nav>
 
       {/* Main Content */}
