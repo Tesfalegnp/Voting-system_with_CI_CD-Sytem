@@ -6,11 +6,9 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log("MongoDB connected"))
+// MongoDB connection (modern syntax, no deprecated options)
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB error", err));
 
 // Vote Schema
@@ -21,10 +19,11 @@ const voteSchema = new mongoose.Schema({
 });
 const Vote = mongoose.model('Vote', voteSchema);
 
-// Routes
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Routes
 app.post('/vote', async (req, res) => {
   const { name, phone, choice } = req.body;
   try {
@@ -40,6 +39,7 @@ app.get('/', (req, res) => {
   res.json({ message: "Backend is running" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// Updated for Render: Bind to 0.0.0.0 instead of localhost
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });

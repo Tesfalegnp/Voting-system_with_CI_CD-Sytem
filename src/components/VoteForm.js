@@ -10,7 +10,7 @@ function VoteForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://online-voting-api.onrender.com/vote ', {
+      const response = await axios.post('https://voting-system-with-ci-cd-sytem.onrender.com', {
         name,
         phone,
         choice
