@@ -45,7 +45,7 @@ app.listen(PORT, '0.0.0.0', () => {
 });
 
 // Route to get all votes
-app.get('/vote', async (req, res) => {
+app.get('/votes', async (req, res) => {
   try {
     const votes = await Vote.find(); // Get all vote records
     res.json(votes);

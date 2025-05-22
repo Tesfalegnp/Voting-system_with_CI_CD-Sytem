@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import './AdminDashboard.css';
-
 function AdminDashboard() {
   const navigate = useNavigate();
   const isAdmin = localStorage.getItem('isAdminLoggedIn');
@@ -18,7 +16,7 @@ function AdminDashboard() {
 
     const fetchVotes = async () => {
       try {
-        const response = await axios.get('https://online-voting-api.onrender.com/vote');
+        const response = await axios.get('https://online-voting-api.onrender.com/votes ');
         setVotes(response.data);
         setLoading(false);
       } catch (error) {
