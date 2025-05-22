@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Build, Test and Deploy
 
 on:
   push:
@@ -31,7 +31,8 @@ jobs:
 
       - name: Audit dependencies (continue on error)
         run: npm audit || true
-
+      - name: Run Tests
+        run: npm test 
       - name: Build project
         run: npm run build
 
