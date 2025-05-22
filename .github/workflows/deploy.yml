@@ -1,25 +1,36 @@
-name: build-and-deploy
+name: Build and Deploy
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm ci --no-audit --omit=dev
+        run: |
+          npm ci --no-audit --omit=dev
+          npm install react-router-dom --save
+
+      - name: Audit dependencies (continue on error)
+        run: npm audit || true
 
       - name: Build project
         run: npm run build
@@ -29,4 +40,8 @@ jobs:
         with:
           branch: gh-pages
           folder: build
+          clean: true
+          clean-exclude: |
+            CNAME
+            .nojekyll
           token: ${{ secrets.GITHUB_TOKEN }}
