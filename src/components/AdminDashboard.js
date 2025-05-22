@@ -16,7 +16,7 @@ function AdminDashboard() {
 
     const fetchVotes = async () => {
       try {
-        const response = await axios.get('https://online-voting-api.onrender.com/votes ');
+        const response = await axios.get('https://online-voting-api.onrender.com/votes');
         setVotes(response.data);
         setLoading(false);
       } catch (error) {
