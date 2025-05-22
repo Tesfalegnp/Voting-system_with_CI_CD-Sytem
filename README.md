@@ -27,7 +27,6 @@ A full-stack voting web application built using React, Node.js, Express, MongoDB
 - Git installed and configured
 
 ---
-
 ### 📦 Project Structure
 
 ```
