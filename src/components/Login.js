@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import './login.css'; // Make sure this import exists
+
+
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
@@ -17,22 +20,37 @@ function Login() {
   };
 
   return (
-    <div className="login-container text-white text-center p-5">
-      <h2 className="mb-4">Admin Login</h2>
-      <form onSubmit={handleLogin} className="bg-dark p-4 rounded shadow" style={{ maxWidth: 400, margin: 'auto', opacity: 0.95 }}>
-        <div className="form-group mb-3">
-          <label>Username</label>
-          <input type="text" className="form-control" value={username} onChange={(e) => setUsername(e.target.value)} required />
+    <div className="login-container">
+      <h2>Admin Portal</h2>
+      <form onSubmit={handleLogin}>
+        <div className="form-group">
+          <input 
+            type="text" 
+            className="form-control" 
+            placeholder="Username"
+            value={username} 
+            onChange={(e) => setUsername(e.target.value)} 
+            required 
+          />
         </div>
-        <div className="form-group mb-4">
-          <label>Password</label>
-          <input type="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <div className="form-group">
+          <input 
+            type="password" 
+            className="form-control" 
+            placeholder="password"
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            required 
+          />
         </div>
-        <button type="submit" className="btn btn-success w-100">Login</button>
+       <center><button type="submit" className="btn btn-success">
+          Login
+        </button> </center> 
       </form>
 
-      {/* ✅ Now works because we imported Link */}
-      <Link to="/" className="btn btn-link mt-3 text-white">Back to Home</Link>
+      <Link to="/" className="btn btn-link">
+        ← Back to Home
+      </Link>
     </div>
   );
 }
