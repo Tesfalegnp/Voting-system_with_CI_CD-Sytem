@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Voting-system_with_CI_CD-Sytem/static/css/main.f8ff44df.css",
+    "main.js": "/Voting-system_with_CI_CD-Sytem/static/js/main.3f3f6106.js",
+    "static/js/453.b1499672.chunk.js": "/Voting-system_with_CI_CD-Sytem/static/js/453.b1499672.chunk.js",
+    "index.html": "/Voting-system_with_CI_CD-Sytem/index.html",
+    "main.f8ff44df.css.map": "/Voting-system_with_CI_CD-Sytem/static/css/main.f8ff44df.css.map",
+    "main.3f3f6106.js.map": "/Voting-system_with_CI_CD-Sytem/static/js/main.3f3f6106.js.map",
+    "453.b1499672.chunk.js.map": "/Voting-system_with_CI_CD-Sytem/static/js/453.b1499672.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f8ff44df.css",
+    "static/js/main.3f3f6106.js"
+  ]
+}
