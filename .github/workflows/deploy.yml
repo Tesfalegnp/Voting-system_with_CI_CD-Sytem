@@ -7,30 +7,45 @@ on:
     branches: [ main ]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout the repository
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v2
-              with:
-                node-version: '20'
-                cache: 'npm'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-            - name: Install dependencies
-              run: npm install
+      - name: Install dependencies
+        run: |
+          npm install
+          npm ci --omit=dev
 
-            - name: Run Tests
-              run: npm test
+      - name: Run tests (if tests exist)
+        run: |
+          if [ -f "package.json" ] && grep -q '"test"' package.json; then
+            npm test
+          else
+            echo "No tests configured"
+          fi
 
-            - name: Build Project
-              run: npm run build
+      - name: Build project
+        run: |
+          if [ -f "package.json" ] && grep -q '"build"' package.json; then
+            npm run build
+          else
+            echo "No build script found"
+          fi
 
-            - name: Deploy to GitHub Pages
-              uses: JamesIves/github-pages-deploy-action@v4
-              with:
-                branch: gh-pages
-                folder: build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build
+          clean: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
