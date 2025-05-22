@@ -43,3 +43,13 @@ app.get('/', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// Route to get all votes
+app.get('/vote', async (req, res) => {
+  try {
+    const votes = await Vote.find(); // Get all vote records
+    res.json(votes);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch votes' });
+  }
+});
