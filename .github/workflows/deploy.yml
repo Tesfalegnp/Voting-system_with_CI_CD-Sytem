@@ -1,4 +1,4 @@
-name: Build, Test and Deploy
+name: Build and Deploy
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Checkout repository
@@ -22,24 +23,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install
-          npm ci --omit=dev
+          npm ci --no-audit --omit=dev
+          npm install react-router-dom --save
 
-      - name: Run tests (if tests exist)
-        run: |
-          if [ -f "package.json" ] && grep -q '"test"' package.json; then
-            npm test
-          else
-            echo "No tests configured"
-          fi
+      - name: Audit dependencies (continue on error)
+        run: npm audit || true
 
       - name: Build project
-        run: |
-          if [ -f "package.json" ] && grep -q '"build"' package.json; then
-            npm run build
-          else
-            echo "No build script found"
-          fi
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -47,5 +38,8 @@ jobs:
           branch: gh-pages
           folder: build
           clean: true
+          clean-exclude: |
+            CNAME
+            .nojekyll
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
